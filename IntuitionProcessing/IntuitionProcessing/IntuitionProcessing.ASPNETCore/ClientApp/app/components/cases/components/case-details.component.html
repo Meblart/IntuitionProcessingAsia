@@ -1,0 +1,86 @@
+﻿<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="header text-center" style="margin-bottom: 10px;">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <button (click)="goBack()" style="margin-left: -25px;" class="btn btn-default btn-block table-but">Back</button>
+                            </div>
+                            <div class="col-md-2">
+                                <div [hidden]="isEditable">
+                                    <button (click)="enableEditing()" class="btn btn-default btn-block table-but">Edit</button>
+                                </div>
+                            </div>
+                            <!--<div class="col-md-4"></div>-->
+                            <div class="col-md-4">
+                                <h4 class="title" style="margin-bottom: 24px;">{{pageTitle}}</h4>
+                            </div>
+                            <!--<div class="col-md-2"></div>-->
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <form (ngSubmit)="onSubmit(case)" #caseForm="ngForm">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="id">ID</label>
+                                        <input type="number" id="caseId" class="form-control border-input" [readonly]="!isEditable" name="caseId" [(ngModel)]="case.caseId" required #id="ngModel">
+                                    </div>
+                                    <div [hidden]="id.valid || id.untouched"
+                                         class="alert alert-danger">
+                                        Id is required
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="creationDate">Date of creation</label>
+                                        <input type="text" id="creationDate" class="form-control border-input" [readonly]="!isEditable" name="creationDate" [(ngModel)]="case.creationDate" required #creationDate="ngModel">
+                                    </div>
+                                    <div [hidden]="creationDate.valid || creationDate.untouched"
+                                         class="alert alert-danger">
+                                        Creation date is required
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="site">Site</label>
+                                        <input type="text" id="site" class="form-control border-input" [readonly]="!isEditable" name="site" [(ngModel)]="case.site" required #site="ngModel">
+                                    </div>
+                                    <div [hidden]="site.valid || site.untouched"
+                                         class="alert alert-danger">
+                                        Site is required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea rows="5" id="description" class="form-control border-input disabledInput" [readonly]="!isEditable" name="description" [(ngModel)]="case.description" required #description="ngModel"></textarea>
+                                    </div>
+                                    <div [hidden]="description.valid || description.untouched"
+                                         class="alert alert-danger">
+                                        Description is required
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" [hidden]="!isEditable">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-default btn-block table-but btn-wd" [disabled]="!caseForm.form.valid">{{pageSubBut}}</button>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

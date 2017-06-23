@@ -1,0 +1,40 @@
+﻿<error [error]="error" *ngIf="isError"></error>
+
+<div class="assign-client" *ngIf="!isError">
+	<div class="header table-header">
+		<h4 class="title">Clients for assignment</h4>
+	</div>
+	<hr />
+
+	<div class="row">
+		<div class="col-md-6 col-sm-6 col-xs-12 center-div">
+			<form>
+				<div class="search pull-left">
+					<input class="form-control pull-left search-input" type="text" placeholder="Search" [formControl]="clientLookup" />
+				</div>
+			</form>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-12 center-div">
+			<button class="btn btn-default btn-block table-but pull-left btn-wd btn-add" (click)="closeClientsAssignments()">Done</button>
+		</div>
+	</div>
+
+	<hr />
+	<div *ngIf="foundClients" class="content-table">
+		<table id="fresh-table" class="table table-responsive">
+			<thead>
+				<tr>
+					<th>Code</th>
+					<th>Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let lookupClient of foundClients | async">
+					<td>{{lookupClient.code}}</td>
+					<td>{{lookupClient.name}}</td>
+					<td><button class="btn btn-default btn-block table-but" (click)="assignClient(lookupClient)">Assign</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

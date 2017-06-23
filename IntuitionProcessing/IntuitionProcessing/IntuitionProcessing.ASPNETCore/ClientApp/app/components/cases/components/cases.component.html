@@ -1,0 +1,51 @@
+﻿<div class="content">
+    <p *ngIf="!cases">Loading cases...</p>
+
+    <div *ngIf="cases" class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 buttons-nav content">
+                <div class="col-md-2">
+                    <button (click)="goBack()" class="btn btn-default btn-block table-but">Back</button>
+                </div>
+                <div class="col-md-2">
+                    <button (click)="addCase()" class="btn btn-default btn-block table-but">Add case</button>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+            </div>
+
+            <div class="col-md-12 card">
+                <div class="header">
+                    <h4 class="title" style="margin-bottom: 20px;">Cases history</h4>
+                </div>
+                <hr>
+                <table id="fresh-table" class="table">
+                    <thead>
+                        <tr>
+                            <th data-field="id">ID</th>
+                            <th data-field="evidence" data-sortable="true"><i class="ti-arrows-vertical pull-right" style="margin-top: 15px; margin-left: 5px; color: #949097; font-size: 12px;"></i>Site</th>
+                            <th data-field="description">Description</th>
+                            <th data-field="date" data-sortable="true"><i class="ti-arrows-vertical pull-right" style="margin-top: 15px; margin-left: 5px; color: #949097; font-size: 12px;"></i>Date of creation</th>
+                            <th data-field="type">Type</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let case of _cases">
+                            <td>{{case.caseId}}</td>
+                            <td>{{case.site}}</td>
+                            <td>{{case.description}}</td>
+                            <td>{{case.creationDate}}</td>
+                            <td>managerpoland.intuition.com</td>
+                            <td><button class="btn btn-default btn-block table-but" (click)="editCase(case.caseId)">Edit</button></td>
+                            <td><button class="btn btn-default btn-block table-but" (click)="getCase(case.caseId)">Details</button></td>
+                            <td><button class="btn btn-default btn-block table-but" (click)="deleteCase(case)">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

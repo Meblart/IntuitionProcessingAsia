@@ -1,0 +1,38 @@
+<div class="sidebar" data-background-color="white" data-active-color="danger">
+
+	<!--
+				Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+				Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+	<div class="sidebar-wrapper">
+		<div class="logo">
+			<a class="simple-text" [routerLink]="['/home']">
+				Intuition Processing
+			</a>
+		</div>
+
+		<ul class="nav nav-menu">
+
+			<li class="active">
+				<a [routerLink]="['/clients']">
+					<i class="ti-user"></i>
+					<p>Clients</p>
+				</a>
+			</li>
+			<li>
+				<a [routerLink]="['/cases']">
+					<i class="ti-view-list-alt"></i>
+					<p>Cases</p>
+				</a>
+			</li>
+			<li>
+				<a [routerLink]="['/users']">
+					<i class="ti-user"></i>
+					<p>Users</p>
+				</a>
+			</li>
+		</ul>
+
+	</div>
+</div>
